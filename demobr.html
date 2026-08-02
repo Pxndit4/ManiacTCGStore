@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>🏆 Ranking Pokémon</title>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:20px;
+}
+
+h1{
+    text-align:center;
+}
+
+.formulario{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+input{
+    padding:10px;
+    width:250px;
+}
+
+button{
+    padding:8px 12px;
+    cursor:pointer;
+}
+
+#btnGirar{
+    margin-left:10px;
+    background:#ff9800;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+#selectorPokemon{
+    display:grid;
+    grid-template-columns:repeat(5,100px);
+    gap:10px;
+    margin-top:15px;
+}
+
+.pokemon-option{
+    width:100px;
+    height:100px;
+    border:3px solid transparent;
+    border-radius:10px;
+    cursor:pointer;
+    overflow:hidden;
+    background-image:url('pokemon_br.png');
+    background-size:500px 300px;
+    background-repeat:no-repeat;
+}
+
+.pokemon-option:hover{
+    border-color:#2196f3;
+}
+
+.pokemon-option.selected{
+    border-color:red;
+}
+
+#tablero{
+    display:grid;
+    grid-template-columns:repeat(5,180px);
+    gap:10px;
+    justify-content:center;
+}
+
+.celda{
+    width:180px;
+    height:180px;
+    position:relative;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid #ccc;
+}
+
+.avatar{
+    width:100%;
+    height:100%;
+    background-image:url('pokemon_br.png');
+    background-size:900px 540px;
+    background-repeat:no-repeat;
+}
+
+.overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(0,0,0,.75);
+    color:white;
+    padding:6px;
+}
+
+.nombre{
+    font-weight:bold;
+    font-size:14px;
+}
+
+.puntaje{
+    color:gold;
+    font-weight:bold;
+    margin-top:4px;
+    margin-bottom:6px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-contenido{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    min-width:320px;
+}
+
+.pokemon-popup{
+    width:260px;
+    height:260px;
+    margin:auto;
+    background-image:url('pokemon_br.png');
+    background-size:1300px 780px;
+    background-repeat:no-repeat;
+}
+
+</style>
+</head>
+<body>
+
+<h1>🏆 Cacería Pokémon</h1>
+
+<div class="formulario">
+
+    <h3>Nuevo participante</h3>
+
+    <input
+        type="text"
+        id="nombre"
+        placeholder="Nombre del participante">
+
+    <button id="btnAgregar">
+        Agregar
+    </button>
+
+    <button id="btnGirar">
+        🎡 Girar
+    </button>
+
+    <h4>Seleccionar Pokémon</h4>
+
+    <div id="selectorPokemon"></div>
+
+</div>
+
+<div id="tablero"></div>
+
+<div id="modalGanador" class="modal">
+
+    <div class="modal-contenido">
+
+        <h2 id="tituloPopup">
+            🎉 Pokémon Capturado
+        </h2>
+
+        <div id="pokemonGanador"></div>
+
+        <br>
+
+        <button onclick="cerrarModal()">
+            Cerrar
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const pokemons = [
+    "Venusaur",
+    "Charizard",
+    "Blastoise",
+    "Venonat",
+    "Pidgeotto",
+    "Ekans",
+    "Pikachu",
+    "Nidorino",
+    "Nidorina",
+    "Vulpix",
+    "Jigglypuff",
+    "Gloom",
+    "Meowth",
+    "Psyduck",
+    "Primeape"
+];
+
+let avatarSeleccionado = null;
+let participantes = [];
+
+$(function(){
+
+    cargarSelector();
+    dibujarTablero();
+
+    $("#btnAgregar").click(function(){
+
+        const nombre = $("#nombre").val().trim();
+
+        if(nombre === ""){
+            alert("Ingrese un nombre");
+            return;
+        }
+
+        if(avatarSeleccionado === null){
+            alert("Seleccione un Pokémon");
+            return;
+        }
+
+        participantes.push({
+            id: Date.now(),
+            nombre: nombre,
+            avatar: avatarSeleccionado,
+            puntaje: 0
+        });
+
+        avatarSeleccionado = null;
+
+        $("#nombre").val("");
+
+        cargarSelector();
+        dibujarTablero();
+
+    });
+
+    $("#btnGirar").click(function(){
+
+        if(participantes.length === 0){
+
+            alert("No hay participantes");
+            return;
+        }
+
+        const indice = Math.floor(
+            Math.random() * participantes.length
+        );
+
+        const ganador = participantes[indice];
+
+        ganador.puntaje++;
+
+        dibujarTablero();
+
+        mostrarGanador(ganador);
+
+    });
+
+});
+
+function cargarSelector(){
+
+    let html = "";
+
+    for(let i=0;i<15;i++){
+
+        const usado =
+            participantes.some(
+                p => p.avatar === i
+            );
+
+        if(usado){
+            continue;
+        }
+
+        const col = i % 5;
+        const fila = Math.floor(i / 5);
+
+        html += `
+        <div
+            class="pokemon-option"
+            data-id="${i}"
+            title="${pokemons[i]}"
+            style="
+                background-position:
+                ${-(col*100)}px
+                ${-(fila*100)}px;
+            ">
+        </div>
+        `;
+    }
+
+    $("#selectorPokemon").html(html);
+}
+
+$(document).on(
+    "click",
+    ".pokemon-option",
+    function(){
+
+        $(".pokemon-option")
+            .removeClass("selected");
+
+        $(this)
+            .addClass("selected");
+
+        avatarSeleccionado =
+            parseInt($(this).data("id"));
+
+    }
+);
+
+$(document).keydown(function(e){
+
+    if(e.key === "F2"){
+
+        e.preventDefault();
+
+        $("#btnGirar").click();
+    }
+
+});
+
+function dibujarTablero(){
+
+    let html = "";
+
+    participantes.forEach(jugador => {
+
+        const col =
+            jugador.avatar % 5;
+
+        const fila =
+            Math.floor(
+                jugador.avatar / 5
+            );
+
+        html += `
+        <div class="celda">
+
+            <div
+                class="avatar"
+                style="
+                    background-position:
+                    ${-(col*180)}px
+                    ${-(fila*180)}px;
+                ">
+            </div>
+
+            <div class="overlay">
+
+                <div class="nombre">
+                    ${jugador.nombre}
+                </div>
+
+                <div class="puntaje">
+                    ⭐ ${jugador.puntaje}
+                </div>
+
+                <button
+                    onclick="eliminarJugador(${jugador.id})">
+                    ❌ 
+                </button>
+
+            </div>
+
+        </div>
+        `;
+    });
+
+    $("#tablero").html(html);
+}
+
+function eliminarJugador(id){
+
+    participantes =
+        participantes.filter(
+            p => p.id !== id
+        );
+
+    cargarSelector();
+    dibujarTablero();
+}
+
+function mostrarGanador(jugador){
+
+    const col = jugador.avatar % 5;
+    const fila = Math.floor(jugador.avatar / 5);
+
+    let titulo = "🎉 Pokémon Capturado";
+
+    if(jugador.puntaje >= 5){
+
+        titulo = "🏆 GANADOR";
+
+        lanzarConfeti();
+    }
+
+    $("#tituloPopup").text(titulo);
+
+    $("#pokemonGanador").html(`
+
+        <div
+            class="pokemon-popup"
+            style="
+                background-position:
+                -${col * 260}px
+                -${fila * 260}px;
+            ">
+        </div>
+
+        <h3>${jugador.nombre}</h3>
+
+        <p>
+            ⭐ Puntaje: ${jugador.puntaje}
+        </p>
+
+    `);
+
+    $("#modalGanador").css(
+        "display",
+        "flex"
+    );
+}
+
+function cerrarModal(){
+
+    $("#modalGanador").hide();
+
+}
+
+function lanzarConfeti(){
+
+    const myCanvas = document.createElement("canvas");
+
+    myCanvas.style.position = "fixed";
+    myCanvas.style.top = "0";
+    myCanvas.style.left = "0";
+    myCanvas.style.width = "100%";
+    myCanvas.style.height = "100%";
+    myCanvas.style.pointerEvents = "none";
+    myCanvas.style.zIndex = "999999";
+
+    document.body.appendChild(myCanvas);
+
+    const miConfeti = confetti.create(
+        myCanvas,
+        {
+            resize: true,
+            useWorker: true
+        }
+    );
+
+    const fin = Date.now() + 5000;
+
+    const intervalo = setInterval(() => {
+
+        if(Date.now() > fin){
+
+            clearInterval(intervalo);
+
+            setTimeout(() => {
+                myCanvas.remove();
+            },1000);
+
+            return;
+        }
+
+        miConfeti({
+            particleCount: 10,
+            angle: 60,
+            spread: 100,
+            origin: {
+                x: 0,
+                y: 0.6
+            }
+        });
+
+        miConfeti({
+            particleCount: 10,
+            angle: 120,
+            spread: 100,
+            origin: {
+                x: 1,
+                y: 0.6
+            }
+        });
+
+    },200);
+
+}
+
+</script>
+
+</body>
+</html>
