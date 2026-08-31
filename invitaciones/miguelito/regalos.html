@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#e53935">
+
+<title>
+    Mesa de Regalos de Miguelito
+</title>
+
+
+<!-- =====================================================
+     FUENTES
+===================================================== -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+    --red:#e53935;
+    --red-dark:#a51d1d;
+
+    --orange:#ff7900;
+    --orange-light:#ffae32;
+
+    --yellow:#ffd83d;
+
+    --cream:#fff9ed;
+
+    --brown:#44251b;
+
+    --brown-light:#74564a;
+
+    --white:#ffffff;
+
+    --green:#35ad75;
+
+    --shadow:
+        0 15px 40px
+        rgba(80,35,10,.14);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    margin:0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    background:
+        var(--cream);
+
+    color:
+        var(--brown);
+
+    overflow-x:hidden;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+
+    position:relative;
+
+    min-height:430px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            #fff4a8,
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            #ffc49b,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff9ed,
+            #ffe2c4
+        );
+
+}
+
+
+/* =========================================================
+   DECORACIÓN HEADER
+========================================================= */
+
+header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border:
+        4px dashed
+        rgba(229,57,53,.12);
+
+    border-radius:50%;
+
+    animation:
+        rotate 30s linear infinite;
+
+}
+
+
+@keyframes rotate{
+
+    to{
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTENIDO HEADER
+========================================================= */
+
+.header-content{
+
+    position:relative;
+
+    z-index:10;
+
+    width:100%;
+
+    max-width:900px;
+
+    padding:
+        40px 20px;
+
+}
+
+
+/* =========================================================
+   LOGO TIENDA
+========================================================= */
+
+.store-logo{
+
+    width:
+        min(
+            220px,
+            60vw
+        );
+
+    max-height:120px;
+
+    object-fit:contain;
+
+    margin:
+        0 auto 25px;
+
+    display:block;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(0,0,0,.15)
+        );
+
+}
+
+
+/* =========================================================
+   TEXTO PEQUEÑO
+========================================================= */
+
+.header-mini{
+
+    display:inline-block;
+
+    padding:
+        8px 18px;
+
+    border-radius:30px;
+
+    background:
+        var(--red);
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:15px;
+
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+header h1{
+
+    font-family:
+        'Baloo 2',
+        cursive;
+
+    font-size:
+        clamp(
+            45px,
+            8vw,
+            82px
+        );
+
+    line-height:.9;
+
+    color:
+        var(--red);
+
+    text-shadow:
+        4px 5px 0
+        var(--yellow);
+
+}
+
+
+header h1 span{
+
+    color:
+        var(--brown);
+
+}
+
+
+.header-subtitle{
+
+    margin-top:20px;
+
+    color:
+        var(--brown-light);
+
+    font-size:
+        clamp(
+            15px,
+            3vw,
+            20px
+        );
+
+    line-height:1.6;
+
+}
+
+
+/* =========================================================
+   SCORBUNNY DECORATIVO
+========================================================= */
+
+.bunny{
+
+    position:absolute;
+
+    width:120px;
+
+    z-index:5;
+
+    pointer-events:none;
+
+}
+
+
+.bunny img{
+
+    width:100%;
+
+    display:block;
+
+    filter:
+        drop-shadow(
+            0 10px 10px
+            rgba(0,0,0,.16)
+        );
+
+}
+
+
+.bunny-left{
+
+    left:3%;
+
+    bottom:20px;
+
+    animation:
+        bunnyJump 1.5s infinite;
+
+}
+
+
+.bunny-right{
+
+    right:3%;
+
+    top:45px;
+
+    animation:
+        bunnyFloat 3s ease-in-out infinite;
+
+}
+
+
+@keyframes bunnyJump{
+
+    0%,100%{
+
+        transform:
+            translateY(0);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-25px)
+            rotate(-5deg);
+
+    }
+
+}
+
+
+@keyframes bunnyFloat{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            rotate(-4deg);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-20px)
+            rotate(4deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   FUEGO
+========================================================= */
+
+.fire{
+
+    position:absolute;
+
+    font-size:35px;
+
+    animation:
+        fireFloat 1.4s infinite;
+
+}
+
+
+.fire-1{
+
+    left:18%;
+
+    top:35%;
+
+}
+
+
+.fire-2{
+
+    right:18%;
+
+    bottom:20%;
+
+}
+
+
+@keyframes fireFloat{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            scale(.9);
+
+        opacity:.7;
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-12px)
+            scale(1.1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+.intro{
+
+    position:relative;
+
+    padding:
+        65px 20px 30px;
+
+    text-align:center;
+
+}
+
+
+.intro h2{
+
+    font-family:
+        'Baloo 2',
+        cursive;
+
+    font-size:
+        clamp(
+            35px,
+            6vw,
+            55px
+        );
+
+    margin-bottom:10px;
+
+}
+
+
+.intro p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:
+        var(--brown-light);
+
+    line-height:1.8;
+
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.container{
+
+    width:
+        min(
+            1250px,
+            100%
+        );
+
+    margin:auto;
+
+    padding:
+        0 20px 100px;
+
+}
+
+
+/* =========================================================
+   GRID PRODUCTOS
+========================================================= */
+
+.products{
+
+    display:grid;
+
+    /*
+        4 productos por fila
+        en pantallas grandes.
+    */
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+/* =========================================================
+   TARJETA PRODUCTO
+========================================================= */
+
+.product{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    border:
+        3px solid
+        #ffe1a0;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    animation:
+        productAppear .7s ease both;
+
+}
+
+
+.product:hover{
+
+    transform:
+        translateY(-10px)
+        rotate(-1deg);
+
+    box-shadow:
+        0 25px 55px
+        rgba(80,35,10,.2);
+
+}
+
+
+/* =========================================================
+   ANIMACIÓN ENTRADA PRODUCTOS
+========================================================= */
+
+.product:nth-child(1){
+
+    animation-delay:.05s;
+
+}
+
+
+.product:nth-child(2){
+
+    animation-delay:.10s;
+
+}
+
+
+.product:nth-child(3){
+
+    animation-delay:.15s;
+
+}
+
+
+.product:nth-child(4){
+
+    animation-delay:.20s;
+
+}
+
+
+.product:nth-child(5){
+
+    animation-delay:.25s;
+
+}
+
+
+.product:nth-child(6){
+
+    animation-delay:.30s;
+
+}
+
+
+.product:nth-child(7){
+
+    animation-delay:.35s;
+
+}
+
+
+.product:nth-child(8){
+
+    animation-delay:.40s;
+
+}
+
+
+@keyframes productAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(40px)
+            scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGEN PRODUCTO
+========================================================= */
+
+.product-image{
+
+    position:relative;
+
+    background:
+        #fff7e6;
+
+    padding:15px;
+
+}
+
+
+.product-image img{
+
+    width:100%;
+
+    aspect-ratio:
+        1 / 1;
+
+    object-fit:contain;
+
+    display:block;
+
+    border-radius:18px;
+
+    transition:
+        transform .35s ease;
+
+}
+
+
+.product:hover
+.product-image img{
+
+    transform:
+        scale(1.07);
+
+}
+
+
+/* =========================================================
+   ETIQUETA
+========================================================= */
+
+.product-tag{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    padding:
+        7px 12px;
+
+    background:
+        var(--red);
+
+    color:white;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================================================
+   SCORBUNNY PEQUEÑO EN TARJETA
+========================================================= */
+
+.product-bunny{
+
+    position:absolute;
+
+    right:8px;
+
+    bottom:5px;
+
+    width:45px;
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+
+.product:hover
+.product-bunny{
+
+    opacity:1;
+
+    animation:
+        miniJump .8s infinite;
+
+}
+
+
+.product-bunny img{
+
+    width:100%;
+
+}
+
+
+@keyframes miniJump{
+
+    50%{
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.product-content{
+
+    padding:
+        20px;
+
+}
+
+
+.product-name{
+
+    font-family:
+        'Baloo 2',
+        cursive;
+
+    font-size:25px;
+
+    line-height:1.05;
+
+    min-height:53px;
+
+}
+
+
+.product-detail{
+
+    margin-top:9px;
+
+    color:
+        var(--brown-light);
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    min-height:58px;
+
+}
+
+
+/* =========================================================
+   PRECIO
+========================================================= */
+
+.product-price{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-top:15px;
+
+    padding-top:15px;
+
+    border-top:
+        2px dashed
+        #f2d89f;
+
+}
+
+
+.price-label{
+
+    color:
+        #92786b;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+}
+
+
+.price{
+
+    font-family:
+        'Baloo 2',
+        cursive;
+
+    font-size:31px;
+
+    color:
+        var(--red);
+
+    font-weight:800;
+
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.gift-button{
+
+    width:100%;
+
+    margin-top:15px;
+
+    border:none;
+
+    padding:
+        13px 15px;
+
+    border-radius:17px;
+
+    background:
+        var(--red);
+
+    color:white;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 5px 0
+        var(--red-dark);
+
+    transition:.2s;
+
+}
+
+
+.gift-button:hover{
+
+    transform:
+        translateY(3px);
+
+    box-shadow:
+        0 2px 0
+        var(--red-dark);
+
+}
+
+
+.gift-button:active{
+
+    transform:
+        translateY(5px);
+
+    box-shadow:none;
+
+}
+
+
+/* =========================================================
+   SECCIÓN FINAL
+========================================================= */
+
+.final{
+
+    position:relative;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    padding:
+        90px 20px 130px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e53935,
+            #ff7900
+        );
+
+    color:white;
+
+}
+
+
+.final h2{
+
+    font-family:
+        'Baloo 2',
+        cursive;
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            70px
+        );
+
+    line-height:.9;
+
+}
+
+
+.final p{
+
+    margin:
+        20px auto 0;
+
+    max-width:650px;
+
+    line-height:1.8;
+
+    color:
+        rgba(255,255,255,.9);
+
+}
+
+
+.final-bunny{
+
+    width:150px;
+
+    margin:
+        0 auto 20px;
+
+    animation:
+        bunnyJump 1.5s infinite;
+
+}
+
+
+.final-bunny img{
+
+    width:100%;
+
+}
+
+
+/* =========================================================
+   MODAL CONFIRMACIÓN
+========================================================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(40,15,8,.75);
+
+    backdrop-filter:
+        blur(5px);
+
+}
+
+
+.modal.active{
+
+    display:flex;
+
+}
+
+
+.modal-box{
+
+    width:
+        min(
+            500px,
+            100%
+        );
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.35);
+
+    animation:
+        modalIn .35s ease;
+
+}
+
+
+@keyframes modalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            scale(.8)
+            translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+.modal-bunny{
+
+    width:100px;
+
+    margin:
+        0 auto 10px;
+
+}
+
+
+.modal-bunny img{
+
+    width:100%;
+
+}
+
+
+.modal-box h3{
+
+    font-family:
+        'Baloo 2',
+        cursive;
+
+    font-size:35px;
+
+    color:
+        var(--red);
+
+}
+
+
+.modal-box p{
+
+    margin-top:10px;
+
+    color:
+        var(--brown-light);
+
+    line-height:1.7;
+
+}
+
+
+.modal-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:25px;
+
+}
+
+
+.modal-whatsapp{
+
+    flex:1;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    background:
+        var(--green);
+
+    color:white;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+.modal-close{
+
+    flex:1;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    background:#eee;
+
+    color:
+        var(--brown);
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti{
+
+    position:fixed;
+
+    top:-30px;
+
+    z-index:10000;
+
+    pointer-events:none;
+
+    animation:
+        confettiFall linear forwards;
+
+}
+
+
+@keyframes confettiFall{
+
+    to{
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/*
+    4 columnas
+*/
+
+@media(max-width:1100px){
+
+    .products{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+}
+
+
+/*
+    2 columnas
+*/
+
+@media(max-width:750px){
+
+    .products{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:15px;
+
+    }
+
+
+    .product-content{
+
+        padding:15px;
+
+    }
+
+
+    .product-name{
+
+        font-size:22px;
+
+    }
+
+
+    .product-detail{
+
+        min-height:auto;
+
+    }
+
+
+    .price{
+
+        font-size:27px;
+
+    }
+
+
+    .bunny{
+
+        width:80px;
+
+    }
+
+}
+
+
+/*
+    1 columna
+*/
+
+@media(max-width:480px){
+
+    .products{
+
+        grid-template-columns:
+            1fr;
+
+        max-width:400px;
+
+        margin:auto;
+
+    }
+
+
+    .product-name{
+
+        font-size:25px;
+
+    }
+
+
+    .store-logo{
+
+        width:180px;
+
+    }
+
+
+    .modal-actions{
+
+        flex-direction:column;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+
+    <!-- Scorbunny izquierdo -->
+
+    <div
+        class="bunny bunny-left">
+
+        <img
+            src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png"
+            alt="Scorbunny">
+
+    </div>
+
+
+    <!-- Scorbunny derecho -->
+
+    <div
+        class="bunny bunny-right">
+
+        <img
+            src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png"
+            alt="Scorbunny">
+
+    </div>
+
+
+    <!-- fuego -->
+
+    <div class="fire fire-1">
+        🔥
+    </div>
+
+    <div class="fire fire-2">
+        🔥
+    </div>
+
+
+    <div class="header-content">
+
+
+        <!-- =================================================
+             LOGO DE TU TIENDA
+
+             CAMBIA:
+
+             img/logo.png
+
+             POR LA RUTA DE TU LOGO
+        ================================================= -->
+
+        <img
+            class="store-logo"
+            src="img/logo.png"
+            alt="Logo de la tienda">
+
+
+        <div class="header-mini">
+
+            🎁 REGALOS · NIVEL 9
+
+        </div>
+
+
+        <h1>
+
+            Mesa de Regalos
+            <span>
+                de Miguelito
+            </span>
+
+        </h1>
+
+
+        <p class="header-subtitle">
+
+            🔥 ¡Ayuda a Miguelito a completar
+            su nueva aventura! 🐰
+
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro">
+
+
+    <h2>
+
+        🎁 Elige tu regalo favorito
+
+    </h2>
+
+
+    <p>
+
+        Hemos preparado una selección especial
+        de regalos para Miguelito.
+        Elige el que más te guste y presiona
+        <strong>"Deseo regalarlo"</strong>
+        para comunicarte con nosotros.
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     PRODUCTOS
+===================================================== -->
+
+<main class="container">
+
+
+    <div class="products">
+
+
+        <!-- =================================================
+             PRODUCTO 1
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+
+                <span class="product-tag">
+
+                    ⭐ DESTACADO
+
+                </span>
+
+
+                <img
+                    src="img/Mini-Tins.webp"
+                    alt="Producto 1">
+
+
+                <div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Mini Tin Ascenso Heroico
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye 2 paquetes de refuerzo, stickers y lata coleccionable.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 50.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Mini Tin Ascenso Heroico',
+                        'S/ 50.00',
+                        'Incluye 2 paquetes de refuerzo, stickers y lata coleccionable.'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRODUCTO 2
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/primercompanero2.webp"
+                    alt="Producto 2">
+
+
+                <div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Primer compañero Series 2
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye 2 sobres de refuerzo y 1 sobre con ilustraciones especiales.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 75.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Primer compañero Series 2',
+                        'S/ 75.00',
+                        'Incluye 2 sobres de refuerzo y 1 sobre con ilustraciones especiales'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRODUCTO 3
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/primercompanero3.webp"
+                    alt="Producto 3">
+
+
+                <div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Primer compañero Series 3
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye 2 sobres de refuerzo y 1 sobre con ilustraciones especiales.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 75.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Primer compañero Series 3',
+                        'S/ 75.00',
+                        'Incluye 2 sobres de refuerzo y 1 sobre con ilustraciones especiales.'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRODUCTO 4
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/pokebolaTIN.webp"
+                    alt="Producto 4">
+
+
+                <div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                   Pokebola TIN en Español
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Contiene 3 paquetes de refuerzo de expansiones variadas.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 60.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Pokebola TIN en Español',
+                        'S/ 60.00',
+                        'Contiene 3 paquetes de refuerzo de expansiones variadas.'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRODUCTO 5
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/tripacktinieblas.webp"
+                    alt="Producto 5">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Tri Pack Tinieblas Umbrias
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Contiene 3 paquetes de refuerzo + carta promocional.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 60.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Tri Pack Tinieblas Umbrias',
+                        'S/ 60.00',
+                        'Contiene 3 paquetes de refuerzo + carta promocional'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRODUCTO 6
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/loncheraTin.jpg"
+                    alt="Producto 6">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Lonchera TIN FerroPuas
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Contiene 6 sobres de refuerzo, mini folder y stickers
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 110.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Lonchera TIN FerroPuas',
+                        'S/ 110.00',
+                        'Contiene 6 sobres de refuerzo, mini folder y stickers'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRODUCTO 7
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/morpeko.jpg"
+                    alt="Producto 7">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Morpeko V UNION
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Contiene 5 sobres de refuerzo, Jumbo y cartas promocionales.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 160.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Morpeko V UNION',
+                        'S/ 160.00',
+                        'Contiene 5 sobres de refuerzo, Jumbo y cartas promocionales'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRODUCTO 8
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/Kangaskhan.webp"
+                    alt="Producto 8">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Mega Kangaskhan ex BOX
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye 4 sobres de refuerzo, carta jumbo y carta promocional.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 90.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Mega Kangaskhan ex BOX',
+                        'S/ 90.00',
+                        'Incluye 4 sobres de refuerzo, carta jumbo y carta promocional'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+
+		<!-- =================================================
+             PRODUCTO 9
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/Venusaur.jpg"
+                    alt="Producto 9">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Mega Venasaur ex BOX
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye 8 sobres de refuerzo, carta jumbo y carta promocional.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 160.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Mega Venasaur ex BOX',
+                        'S/ 160.00',
+                        'Incluye 8 sobres de refuerzo, carta jumbo y carta promocional'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+		
+		<!-- =================================================
+             PRODUCTO 10
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/MegaGreninja.webp"
+                    alt="Producto 10">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Mega Greninja ex BOX
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye 8 sobres de refuerzo, carta jumbo y carta promocional.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 150.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Mega Greninja ex BOX',
+                        'S/ 150.00',
+                        'Incluye 8 sobres de refuerzo, carta jumbo y carta promocional'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+		
+		<!-- =================================================
+             PRODUCTO 11
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/gyarados.jpg"
+                    alt="Producto 11">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Gyarados Magikarp Set
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye figura de Gyarados y Magikarp Vinil.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 160.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Gyarados Magikarp Set',
+                        'S/ 160.00',
+                        'Incluye figura de Gyarados y Magikarp Vinil'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+		
+		<!-- =================================================
+             PRODUCTO 12
+        ================================================= -->
+
+        <article
+            class="product">
+
+
+            <div class="product-image">
+
+                <img
+                    src="img/charizardY.webp"
+                    alt="Producto 12">
+				
+				<div class="product-bunny">
+
+                    <img
+                        src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png">
+
+                </div>
+            </div>
+
+
+            <div class="product-content">
+
+
+                <h3 class="product-name">
+
+                    Mega Charizard Y
+
+                </h3>
+
+
+                <p class="product-detail">
+
+                    Incluye Mega Charyzard Y.
+
+                </p>
+
+
+                <div class="product-price">
+
+                    <span class="price-label">
+                        Precio
+                    </span>
+
+                    <span class="price">
+                        S/ 140.00
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="gift-button"
+                    onclick="seleccionarRegalo(
+                        'Mega Charizard Y',
+                        'S/ 140.00',
+                        'Incluye Mega Charyzard Y'
+                    )">
+
+                    🎁 Deseo regalarlo
+
+                </button>
+
+            </div>
+
+        </article>
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section class="final">
+
+
+    <div class="final-bunny">
+
+        <img
+            src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png"
+            alt="Scorbunny">
+
+    </div>
+
+
+    <h2>
+
+        🔥 ¡Gracias por ayudar
+        a Miguelito! 🔥
+
+    </h2>
+
+
+    <p>
+
+        Cada regalo ayudará a que nuestro
+        entrenador tenga una celebración
+        inolvidable.
+
+        <br><br>
+
+        🐰 ¡Scorbunny y Miguelito
+        te lo agradecerán!
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="giftModal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-bunny">
+
+            <img
+                src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/813.png"
+                alt="Scorbunny">
+
+        </div>
+
+
+        <h3>
+
+            🎁 ¡Excelente elección!
+
+        </h3>
+
+
+        <p id="modalText">
+
+        </p>
+
+
+        <div class="modal-actions">
+
+
+            <button
+                class="modal-whatsapp"
+                id="whatsappButton">
+
+                📱 Deseo regalarlo
+
+            </button>
+
+
+            <button
+                class="modal-close"
+                onclick="cerrarModal()">
+
+                Volver
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   CONFIGURACIÓN
+========================================================= */
+
+
+/*
+    COLOCA AQUÍ EL WHATSAPP
+    QUE RECIBIRÁ LOS MENSAJES.
+
+    Perú:
+
+    51987654321
+
+    Sin +, espacios ni guiones.
+*/
+
+const WHATSAPP =
+    "51947345352";
+
+
+/* =========================================================
+   VARIABLES DEL REGALO
+========================================================= */
+
+let regaloSeleccionado = {
+
+    nombre:"",
+    precio:"",
+    detalle:""
+
+};
+
+
+/* =========================================================
+   SELECCIONAR REGALO
+========================================================= */
+
+function seleccionarRegalo(
+    nombre,
+    precio,
+    detalle
+){
+
+    regaloSeleccionado.nombre =
+        nombre;
+
+
+    regaloSeleccionado.precio =
+        precio;
+
+
+    regaloSeleccionado.detalle =
+        detalle;
+
+
+    const modal =
+        document.getElementById(
+            "giftModal"
+        );
+
+
+    const text =
+        document.getElementById(
+            "modalText"
+        );
+
+
+    text.innerHTML =
+
+        "Has seleccionado:<br><br>" +
+
+        "<strong>" +
+        nombre +
+        "</strong><br><br>" +
+
+        "💰 " +
+        precio +
+        "<br>" +
+
+        "📝 " +
+        detalle +
+        "<br><br>" +
+
+        "¿Quieres comunicarte con nosotros " +
+        "para regalarlo a Miguelito?";
+
+
+    modal.classList.add(
+        "active"
+    );
+
+
+    lanzarConfetti();
+
+}
+
+
+/* =========================================================
+   CERRAR MODAL
+========================================================= */
+
+function cerrarModal(){
+
+    document
+        .getElementById(
+            "giftModal"
+        )
+        .classList
+        .remove(
+            "active"
+        );
+
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+document
+    .getElementById(
+        "whatsappButton"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            if(
+                !WHATSAPP
+            ){
+
+                alert(
+                    "El número de WhatsApp todavía no ha sido configurado."
+                );
+
+                return;
+
+            }
+
+
+            /*
+                MENSAJE QUE RECIBIRÁS
+            */
+
+            const mensaje =
+
+                "*MESA DE REGALOS - MIGUELITO*" +
+
+                "\n\n" +
+
+                "Deseo regalarle " +
+
+                "*" +
+                regaloSeleccionado.nombre +
+                "*" +
+
+                " a Miguelito." +
+
+                "\n\n" +
+
+                "Precio: " +
+
+                regaloSeleccionado.precio +
+
+                "\n\n" +
+
+                "Detalle: " +
+
+                regaloSeleccionado.detalle;
+
+
+            const url =
+
+                "https://wa.me/" +
+
+                WHATSAPP +
+
+                "?text=" +
+
+                encodeURIComponent(
+                    mensaje
+                );
+
+
+            window.open(
+                url,
+                "_blank"
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+function lanzarConfetti(){
+
+    const items = [
+
+        "🔥",
+        "🎉",
+        "🎁",
+        "⭐",
+        "✨",
+        "🐰"
+
+    ];
+
+
+    for(
+        let i=0;
+        i<35;
+        i++
+    ){
+
+        setTimeout(
+            function(){
+
+                const confetti =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                confetti.className =
+                    "confetti";
+
+
+                confetti.textContent =
+                    items[
+                        Math.floor(
+                            Math.random() *
+                            items.length
+                        )
+                    ];
+
+
+                confetti.style.left =
+                    Math.random()*100 +
+                    "vw";
+
+
+                confetti.style.fontSize =
+                    (
+                        15 +
+                        Math.random()*20
+                    ) +
+                    "px";
+
+
+                confetti.style.animationDuration =
+                    (
+                        2 +
+                        Math.random()*3
+                    ) +
+                    "s";
+
+
+                document.body
+                    .appendChild(
+                        confetti
+                    );
+
+
+                setTimeout(
+                    function(){
+
+                        confetti.remove();
+
+                    },
+                    6000
+                );
+
+
+            },
+            i*30
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CERRAR MODAL AL HACER CLICK FUERA
+========================================================= */
+
+document
+    .getElementById(
+        "giftModal"
+    )
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(
+                e.target ===
+                this
+            ){
+
+                cerrarModal();
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
