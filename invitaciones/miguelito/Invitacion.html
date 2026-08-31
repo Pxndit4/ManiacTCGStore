@@ -3625,7 +3625,7 @@ footer p{
             <div class="photo-card reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&q=90">
+                    src="img/recuerdo1.jpeg?auto=format&fit=crop&w=700&q=90">
 
                 <div class="card-name">
                     ⭐ Recuerdo #01
@@ -3637,7 +3637,7 @@ footer p{
             <div class="photo-card reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=700&q=90">
+                    src="img/recuerdo2.jfif?auto=format&fit=crop&w=700&q=90">
 
                 <div class="card-name">
                     🔥 Recuerdo #02
@@ -3649,7 +3649,7 @@ footer p{
             <div class="photo-card reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=700&q=90">
+                    src="img/recuerdo3.jfif?auto=format&fit=crop&w=700&q=90">
 
                 <div class="card-name">
                     ⚡ Recuerdo #03
@@ -3661,7 +3661,7 @@ footer p{
             <div class="photo-card reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1504159506876-f8338247a14a?auto=format&fit=crop&w=700&q=90">
+                    src="img/recuerdo4.jfif?auto=format&fit=crop&w=700&q=90">
 
                 <div class="card-name">
                     🐰 Recuerdo #04
@@ -3673,7 +3673,7 @@ footer p{
             <div class="photo-card reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1602030028438-4cf153cbae9e?auto=format&fit=crop&w=700&q=90">
+                    src="img/recuerdo5.jfif?auto=format&fit=crop&w=700&q=90">
 
                 <div class="card-name">
                     🎉 Recuerdo #05
@@ -3685,7 +3685,7 @@ footer p{
             <div class="photo-card reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=90">
+                    src="img/recuerdo6.jfif?auto=format&fit=crop&w=700&q=90">
 
                 <div class="card-name">
                     🏆 Recuerdo #06
@@ -3773,37 +3773,7 @@ footer p{
                     type="text"
                     placeholder="Escribe tu nombre">
 
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Número de entrenadores
-                </label>
-
-                <select id="guests">
-
-                    <option value="0">
-                        Solo yo
-                    </option>
-
-                    <option value="1">
-                        Yo + 1
-                    </option>
-
-                    <option value="2">
-                        Yo + 2
-                    </option>
-
-                    <option value="3">
-                        Yo + 3
-                    </option>
-
-                </select>
-
-            </div>
-
+            </div>            
 
             <div class="rsvp-buttons">
 
@@ -4396,12 +4366,6 @@ function confirmar(
         ).value.trim();
 
 
-    const guests =
-        document.getElementById(
-            "guests"
-        ).value;
-
-
     const result =
         document.getElementById(
             "rsvpResult"
@@ -4433,12 +4397,7 @@ function confirmar(
             name +
             "!<br>" +
 
-            "Miguelito ya te está esperando.<br><br>" +
-
-            "👥 Entrenadores confirmados: " +
-            (
-                parseInt(guests) + 1
-            );
+            "Miguelito ya te está esperando.<br><br>";
 
 
         lanzarCelebracion();
@@ -4446,8 +4405,7 @@ function confirmar(
 
         enviarWhatsApp(
             name,
-            true,
-            guests
+            true
         );
 
     }
@@ -4466,8 +4424,7 @@ function confirmar(
 
         enviarWhatsApp(
             name,
-            false,
-            guests
+            false
         );
 
     }
@@ -4481,8 +4438,7 @@ function confirmar(
 
 function enviarWhatsApp(
     name,
-    asistir,
-    guests
+    asistir
 ){
 
     if(
@@ -4505,13 +4461,7 @@ function enviarWhatsApp(
             name +
             ". " +
 
-            "Confirmo mi asistencia al cumpleaños de Miguelito 🎉🐰. " +
-
-            "Seremos " +
-            (
-                parseInt(guests) + 1
-            ) +
-            " persona(s).";
+            "Confirmo mi asistencia al cumpleaños de Miguelito 🎉🐰. ";
 
     }
     else{
